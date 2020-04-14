@@ -44,16 +44,11 @@ private:
 	int DirectionChangePosX = -1;
 	int DirectionChangePosY = -1;
 	int ButtonPressDelayMs = 100;
-	int afterButtonPressed = 0;
+	int TimeAfterButtonPressedMs = 0;
 	bool snakeCanGetLonger;
 	std::vector<Snake> m_Snake;
 	std::vector<int> m_DirectionChangeX;
 	std::vector<int> m_DirectionChangeY;
-	bool wFirstPress = true;
-	bool sFirstPress = true;
-	bool aFirstPress = true;
-	bool dFirstPress = true;
-
 };
 
 inline const int Snake::GetSnakeIndexPosX(int _index) const {

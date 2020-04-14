@@ -61,12 +61,10 @@ void Snake::Movement(Snake& _player)
 	const Uint8* state = SDL_GetKeyboardState(NULL);
 
 	int SDL_timePassed = SDL_GetTicks();
-	
-	std::cout << "beforePressed:" << SDL_timePassed << std::endl;
 
 	//Keyboard Inputs
 
-	if (state[SDL_SCANCODE_W] && wFirstPress && currentSnakeDirection != Down && SDL_timePassed >= afterButtonPressed) {
+	if (state[SDL_SCANCODE_W] && currentSnakeDirection != Down && SDL_timePassed >= TimeAfterButtonPressedMs) {
 		lastSnakeDirection = currentSnakeDirection;
 		currentSnakeDirection = Up;
 		_player.m_Snake[0].currentSnakeDirection = currentSnakeDirection;
@@ -77,14 +75,9 @@ void Snake::Movement(Snake& _player)
 		int newDirectionChangeY(_player.m_Snake[0].snakePosY);
 		m_DirectionChangeY.push_back(newDirectionChangeY);
 
-		wFirstPress = false;
-		sFirstPress = true;
-		aFirstPress = true;
-		dFirstPress = true;
-
-		afterButtonPressed = SDL_GetTicks() + ButtonPressDelayMs;
+		TimeAfterButtonPressedMs = SDL_GetTicks() + ButtonPressDelayMs;
 	}
-	else if (state[SDL_SCANCODE_S] && sFirstPress && currentSnakeDirection != Up && SDL_timePassed >= afterButtonPressed) {
+	else if (state[SDL_SCANCODE_S] && currentSnakeDirection != Up && SDL_timePassed >= TimeAfterButtonPressedMs) {
 		lastSnakeDirection = currentSnakeDirection;
 		currentSnakeDirection = Down;
 		_player.m_Snake[0].currentSnakeDirection = currentSnakeDirection;
@@ -95,14 +88,9 @@ void Snake::Movement(Snake& _player)
 		int newDirectionChangeY(_player.m_Snake[0].snakePosY);
 		m_DirectionChangeY.push_back(newDirectionChangeY);
 
-		wFirstPress = true;
-		sFirstPress = false;
-		aFirstPress = true;
-		dFirstPress = true;
-
-		afterButtonPressed = SDL_GetTicks() + ButtonPressDelayMs;
+		TimeAfterButtonPressedMs = SDL_GetTicks() + ButtonPressDelayMs;
 	}
-	if (state[SDL_SCANCODE_A] && aFirstPress && currentSnakeDirection != Right && SDL_timePassed >= afterButtonPressed) {
+	if (state[SDL_SCANCODE_A] && currentSnakeDirection != Right && SDL_timePassed >= TimeAfterButtonPressedMs) {
 		lastSnakeDirection = currentSnakeDirection;
 		currentSnakeDirection = Left;
 		_player.m_Snake[0].currentSnakeDirection = currentSnakeDirection;
@@ -113,14 +101,9 @@ void Snake::Movement(Snake& _player)
 		int newDirectionChangeY(_player.m_Snake[0].snakePosY);
 		m_DirectionChangeY.push_back(newDirectionChangeY);
 
-		wFirstPress = true;
-		sFirstPress = true;
-		aFirstPress = false;
-		dFirstPress = true;
-
-		afterButtonPressed = SDL_GetTicks() + ButtonPressDelayMs;
+		TimeAfterButtonPressedMs = SDL_GetTicks() + ButtonPressDelayMs;
 	}
-	else if (state[SDL_SCANCODE_D] && dFirstPress && currentSnakeDirection != Left && SDL_timePassed >= afterButtonPressed) {
+	else if (state[SDL_SCANCODE_D] && currentSnakeDirection != Left && SDL_timePassed >= TimeAfterButtonPressedMs) {
 		lastSnakeDirection = currentSnakeDirection;
 		currentSnakeDirection = Right;
 		_player.m_Snake[0].currentSnakeDirection = currentSnakeDirection;
@@ -131,12 +114,7 @@ void Snake::Movement(Snake& _player)
 		int newDirectionChangeY(_player.m_Snake[0].snakePosY);
 		m_DirectionChangeY.push_back(newDirectionChangeY);
 
-		wFirstPress = true;
-		sFirstPress = true;
-		aFirstPress = true;
-		dFirstPress = false;
-
-		afterButtonPressed = SDL_GetTicks() + ButtonPressDelayMs;
+		TimeAfterButtonPressedMs = SDL_GetTicks() + ButtonPressDelayMs;
 	}
 	//Debug KEY
 	if (state[SDL_SCANCODE_K])
@@ -144,28 +122,24 @@ void Snake::Movement(Snake& _player)
 
 	}
 
-
-	/*if (wFirstPress == false || sFirstPress == false || aFirstPress == false || dFirstPress == false)
-	{*/
-		/*std::cout << "m_DirectionChangeX Array Size:" << m_DirectionChangeX.size() << std::endl;*/
-
-		for (int i = 1; i < m_Snake.size(); i++)
+	// Direction Change for Snake
+	for (int i = 1; i < m_Snake.size(); i++)
+	{
+		for (int j = 0; j < m_DirectionChangeX.size(); j++)
 		{
-			for (int j = 0; j < m_DirectionChangeX.size(); j++)
+			if (_player.m_Snake[i].snakePosX == m_DirectionChangeX[j] && _player.m_Snake[i].snakePosY == m_DirectionChangeY[j])
 			{
-				if (_player.m_Snake[i].snakePosX == m_DirectionChangeX[j] && _player.m_Snake[i].snakePosY == m_DirectionChangeY[j])
-				{
-					_player.m_Snake[i].currentSnakeDirection = _player.m_Snake[i - 1].currentSnakeDirection;
+				_player.m_Snake[i].currentSnakeDirection = _player.m_Snake[i - 1].currentSnakeDirection;
 
-					if (_player.m_Snake[m_Snake.size() - 1].snakePosX == m_DirectionChangeX[j] && _player.m_Snake[m_Snake.size() - 1].snakePosY == m_DirectionChangeY[j])
-					{
-						m_DirectionChangeX.erase(m_DirectionChangeX.begin());
-						m_DirectionChangeY.erase(m_DirectionChangeY.begin());
-					}
+				if (_player.m_Snake[m_Snake.size() - 1].snakePosX == m_DirectionChangeX[j] && _player.m_Snake[m_Snake.size() - 1].snakePosY == m_DirectionChangeY[j])
+				{
+					m_DirectionChangeX.erase(m_DirectionChangeX.begin());
+					m_DirectionChangeY.erase(m_DirectionChangeY.begin());
 				}
 			}
 		}
-	/*}*/
+	}
+
 
 	for (int i = 0; i < m_Snake.size(); i++)
 	{

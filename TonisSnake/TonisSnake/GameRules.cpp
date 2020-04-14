@@ -2,7 +2,7 @@
 
 
 GameRules::GameRules() :
-	PointFont(TTF_OpenFont("/Users/Toni/Desktop/TonisSnake/TonisSnake/assets/arial.ttf", 150))
+	PointFont(TTF_OpenFont("F:/GitRepository/Snake/TonisSnake/assets/arial.ttf", 150))
 	/*PointFont(TTF_OpenFont("arial.ttf", 50))*/
 {
 };
@@ -45,9 +45,6 @@ void GameRules::LosingCondition(Snake& _snake)
 		{
 			std::cout << "You lost! Your final Points are: " << Score << std::endl;
 			SDL_Quit();
-			std::cout << _snake.GetSnakeIndexPosX(0) << " < " << " _snake.GetSnakeIndexPosX(" << i << "): " << _snake.GetSnakeIndexPosX(i) + snakeRectWidth << std::endl;
-			std::cout << _snake.GetSnakeIndexPosY(0) << "_snake.GetSnakeIndexPosY(" << i << "): " << _snake.GetSnakeIndexPosY(i) << std::endl;
-			std::cout << "_snake.GetSnakeIndexDirection(" << i << "): " << _snake.GetSnakeIndexDirection(i) << std::endl;
 		}
 	}
 };
