@@ -1,11 +1,5 @@
-﻿  Ball.cpp
-  GameRules.cpp
+﻿  Snake.cpp
 F:\GitRepository\Snake\TonisSnake\TonisSnake\Snake.h(63,23): warning C4267: 'return': conversion from 'size_t' to 'const int', possible loss of data
-  Snake.cpp
-F:\GitRepository\Snake\TonisSnake\TonisSnake\Snake.h(63,23): warning C4267: 'return': conversion from 'size_t' to 'const int', possible loss of data
-F:\GitRepository\Snake\TonisSnake\TonisSnake\Snake.cpp(60,12): warning C4101: 'event': unreferenced local variable
-F:\GitRepository\Snake\TonisSnake\TonisSnake\Snake.cpp(187,38): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  main.cpp
-F:\GitRepository\Snake\TonisSnake\TonisSnake\Snake.h(63,23): warning C4267: 'return': conversion from 'size_t' to 'const int', possible loss of data
-  Generating Code...
+F:\GitRepository\Snake\TonisSnake\TonisSnake\Snake.cpp(59,12): warning C4101: 'event': unreferenced local variable
+F:\GitRepository\Snake\TonisSnake\TonisSnake\Snake.cpp(186,38): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   TonisSnake.vcxproj -> F:\GitRepository\Snake\TonisSnake\x64\Debug\TonisSnake.exe

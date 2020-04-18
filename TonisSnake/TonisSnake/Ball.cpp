@@ -41,7 +41,7 @@ void Ball::Render(SDL_Renderer* _renderer)
 		ballRect.y = ballCenterPosY - ballRadius / 2;
 		ballRect.w = ballRadius;
 		ballRect.h = ballRadius;
-		SDL_SetRenderDrawColor(_renderer, 255, 0, 0, SDL_ALPHA_OPAQUE);
+		SDL_SetRenderDrawColor(_renderer, 255, 69, 0, SDL_ALPHA_OPAQUE);
 		SDL_RenderFillRect(_renderer, &ballRect);
 
 		if (error <= 0)

@@ -19,12 +19,7 @@ int main(int argc, char* argv[])
 	Ball* Enemy = new Ball(randomBallStartPosX, randomBallStartPosY, ballRadius);
 	GameRules* Rules = new GameRules();
 	
-
 	Player->Spawn(*Player);
-
-	//debug
-	std::cout << "randomBallStartPosX: " << randomBallStartPosX << std::endl;
-	std::cout << "randomBallStartPosY: " << randomBallStartPosY << std::endl;
 
 	if (SDL_Init(SDL_INIT_VIDEO) == 0) {
 		SDL_Window* window = NULL;

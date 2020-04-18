@@ -51,10 +51,13 @@ void GameRules::LosingCondition(Snake& _snake)
 
 void GameRules::UpdatePoints(Snake& _snake, Ball& _ball, SDL_Renderer& _renderer)
 {
-	if (_ball.GetBallPosX() + ballRadius + Offset >= _snake.GetSnakeIndexPosX(0) && 
-		_ball.GetBallPosX() - ballRadius - Offset <= _snake.GetSnakeIndexPosX(0) &&
-		_ball.GetBallPosY() + ballRadius + Offset >= _snake.GetSnakeIndexPosY(0) && 
-		_ball.GetBallPosY() - ballRadius - Offset <= _snake.GetSnakeIndexPosY(0))
+	int snakeHeadCenterPosX = _snake.GetSnakeIndexPosX(0) + snakeRectWidth / 2;
+	int snakeHeadCenterPosY = _snake.GetSnakeIndexPosY(0) + snakeRectHeight / 2;
+
+	if (snakeHeadCenterPosX - snakeRectWidth / 2 <= _ball.GetBallPosX() + ballRadius &&
+		snakeHeadCenterPosX + snakeRectWidth / 2 >= _ball.GetBallPosX() - ballRadius &&
+		snakeHeadCenterPosY - snakeRectHeight / 2 <= _ball.GetBallPosY() + ballRadius &&
+		snakeHeadCenterPosY + snakeRectHeight / 2 >= _ball.GetBallPosY() - ballRadius)
 	{
 
 		int randomBallPosX = rand() % screen_width;

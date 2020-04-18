@@ -21,8 +21,7 @@ void Snake::Spawn(Snake& _player)
 		Snake playerSnake(_player.snakePosX + xOffset, _player.snakePosY + yOffset, _player.snakeWidth, _player.snakeHeight, _player.currentSnakeDirection);
 		m_Snake.push_back(playerSnake);
 
-		yOffset += snakeHeight + snakeGapSize;
-		std::cout << "Array Size:" << m_Snake.size() << std::endl;
+		yOffset += snakeHeight + snakeGapSize; 
 	}
 };
 
@@ -32,24 +31,24 @@ void Snake::Update(Snake& _player)
 	for (int i = 0; i < m_Snake.size(); i++)
 	{
 		//left side 
-		if (_player.m_Snake[i].snakePosX - snakeWidth < 0 && _player.m_Snake[i].currentSnakeDirection == Left)
+		if (_player.m_Snake[i].snakePosX + snakeRectWidth < 0 && _player.m_Snake[i].currentSnakeDirection == Left)
 		{
-			_player.m_Snake[i].snakePosX = screen_width;
+			_player.m_Snake[i].snakePosX = screen_width + snakeRectWidth;
 		}
 		//right side
-		if (_player.m_Snake[i].snakePosX + snakeWidth > screen_width&& _player.m_Snake[i].currentSnakeDirection == Right)
+		if (_player.m_Snake[i].snakePosX > screen_width && _player.m_Snake[i].currentSnakeDirection == Right)
 		{
-			_player.m_Snake[i].snakePosX = 0;
+			_player.m_Snake[i].snakePosX = 0 - snakeRectWidth;
 		}
 		// top side
-		if (_player.m_Snake[i].snakePosY < snakeHeight && _player.m_Snake[i].currentSnakeDirection == Up)
+		if (_player.m_Snake[i].snakePosY + snakeHeight < 0 && _player.m_Snake[i].currentSnakeDirection == Up)
 		{
 			_player.m_Snake[i].snakePosY = screen_height;
 		}
 		// bottom side
-		if (_player.m_Snake[i].snakePosY + snakeHeight > screen_height&& _player.m_Snake[i].currentSnakeDirection == Down)
+		if (_player.m_Snake[i].snakePosY > screen_height&& _player.m_Snake[i].currentSnakeDirection == Down)
 		{
-			_player.m_Snake[i].snakePosY = 0;
+			_player.m_Snake[i].snakePosY = 0 - snakeRectHeight;
 		}
 	}
 }
