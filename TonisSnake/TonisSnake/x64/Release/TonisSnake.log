@@ -1,0 +1,14 @@
+﻿  Ball.cpp
+  GameRules.cpp
+F:\GitRepository\Snake\TonisSnake\TonisSnake\Snake.h(63,23): warning C4267: 'return': conversion from 'size_t' to 'const int', possible loss of data
+  main.cpp
+F:\GitRepository\Snake\TonisSnake\TonisSnake\Snake.h(63,23): warning C4267: 'return': conversion from 'size_t' to 'const int', possible loss of data
+  Snake.cpp
+F:\GitRepository\Snake\TonisSnake\TonisSnake\Snake.h(63,23): warning C4267: 'return': conversion from 'size_t' to 'const int', possible loss of data
+F:\GitRepository\Snake\TonisSnake\TonisSnake\Snake.cpp(59,12): warning C4101: 'event': unreferenced local variable
+F:\GitRepository\Snake\TonisSnake\TonisSnake\Snake.cpp(181,38): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 221 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  TonisSnake.vcxproj -> F:\GitRepository\Snake\TonisSnake\x64\Release\TonisSnake.exe

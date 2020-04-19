@@ -79,8 +79,6 @@ void GameRules::UpdatePoints(Snake& _snake, Ball& _ball, SDL_Renderer& _renderer
 		Message = SDL_CreateTextureFromSurface(&_renderer, surfaceMessage);
 		std::cout << "You scored! Your Score is: " << Score << std::endl;
 
-
-
 		_snake.SnakePushBack(_snake);
 
 		_ball.SetBallPosX(randomBallPosX);
