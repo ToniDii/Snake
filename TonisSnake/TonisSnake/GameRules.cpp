@@ -2,8 +2,7 @@
 
 
 GameRules::GameRules() :
-	PointFont(TTF_OpenFont("F:/GitRepository/Snake/TonisSnake/assets/arial.ttf", 150))
-	/*PointFont(TTF_OpenFont("arial.ttf", 50))*/
+	PointFont(TTF_OpenFont("assets/arial.ttf", 150))
 {
 };
 
@@ -27,14 +26,14 @@ void GameRules::InitPoints(SDL_Renderer& _renderer)
 	Message_rect.x = 60;  
 	Message_rect.y = 0; 
 
-	Score_rect.w = 55;
-	Score_rect.h = 20;
-	Score_rect.x = 0;
-	Score_rect.y = 0;
+	score_rect.w = 55;
+	score_rect.h = 20;
+	score_rect.x = 0;
+	score_rect.y = 0;
 }
 
 
-void GameRules::LosingCondition(Snake& _snake)
+void GameRules::LosingCondition(Snake& _snake, SDL_Renderer& _renderer)
 {
 	for (int i = _snake.Getm_SnakeSize() - 1; i > 1; i--)
 	{
@@ -43,7 +42,9 @@ void GameRules::LosingCondition(Snake& _snake)
 			_snake.GetSnakeIndexPosY(0) >= _snake.GetSnakeIndexPosY(i) && 
 			_snake.GetSnakeIndexPosY(0) <= _snake.GetSnakeIndexPosY(i) + snakeRectHeight)
 		{
-			std::cout << "You lost! Your final Points are: " << Score << std::endl;
+			std::cout << "You lost! Your final Score is: " << Score << std::endl;
+
+			SDL_Delay(3000);
 			SDL_Quit();
 		}
 	}
@@ -76,7 +77,7 @@ void GameRules::UpdatePoints(Snake& _snake, Ball& _ball, SDL_Renderer& _renderer
 		std::string scoreText = std::to_string(Score);
 		surfaceMessage = TTF_RenderText_Blended(PointFont, scoreText.c_str(), white);
 		Message = SDL_CreateTextureFromSurface(&_renderer, surfaceMessage);
-		std::cout << "You scored! Your Points are: " << Score << std::endl;
+		std::cout << "You scored! Your Score is: " << Score << std::endl;
 
 
 
@@ -100,5 +101,5 @@ void GameRules::RenderPoints(SDL_Renderer& _renderer)
 	scoreSurfaceMessage = TTF_RenderText_Blended(PointFont, "Score:", white);
 	scoreMessage = SDL_CreateTextureFromSurface(&_renderer, scoreSurfaceMessage);
 
-	SDL_RenderCopy(&_renderer, scoreMessage, NULL, &Score_rect);
+	SDL_RenderCopy(&_renderer, scoreMessage, NULL, &score_rect);
 }

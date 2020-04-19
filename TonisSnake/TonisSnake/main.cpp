@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
 	int randomBallStartPosY = rand() % screen_height;
 
 	Snake* Player = new Snake(playerStartPosX, playerStartPosY, snakeRectWidth, snakeRectHeight, Snake::Up);
-	Ball* Enemy = new Ball(randomBallStartPosX, randomBallStartPosY, ballRadius);
+	Ball* Food = new Ball(randomBallStartPosX, randomBallStartPosY, ballRadius);
 	GameRules* Rules = new GameRules();
 	
 	Player->Spawn(*Player);
@@ -40,12 +40,11 @@ int main(int argc, char* argv[])
 				Player->Movement(*Player);
 				Player->Render(*renderer);
 
-				Enemy->Update();
-				Enemy->Render(renderer);
+				Food->Render(renderer);
 
-				Rules->UpdatePoints(*Player, *Enemy, *renderer);
+				Rules->UpdatePoints(*Player, *Food, *renderer);
 				Rules->RenderPoints(*renderer);
-				Rules->LosingCondition(*Player);
+				Rules->LosingCondition(*Player, *renderer);
 
 				int after = SDL_GetTicks();
 				int ticks = after - before;

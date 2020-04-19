@@ -9,11 +9,6 @@ Ball::Ball(int _posX, int _posY, int _radius) :
 Ball::~Ball() {};
 
 
-void Ball::Update() 
-{
-
-};
-
 void Ball::Render(SDL_Renderer* _renderer)
 {
 	const int32_t diameter = (ballRadius * 2);

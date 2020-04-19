@@ -14,18 +14,18 @@ public:
 	void InitPoints(SDL_Renderer& _renderer);
 	void RenderPoints(SDL_Renderer& _renderer);
 
-	void LosingCondition(Snake& _snake);
+	void LosingCondition(Snake& _snake, SDL_Renderer& _renderer);
 	void UpdatePoints(Snake& _snake, Ball& _ball, SDL_Renderer& _renderer);
 
 private:
 	TTF_Font* PointFont;
 	SDL_Color white = { 255, 255, 255 };
+
 	SDL_Surface* surfaceMessage;
 	SDL_Texture* Message;
 	SDL_Rect Message_rect;
 
-
-	SDL_Rect Score_rect;
+	SDL_Rect score_rect;
 	SDL_Surface* scoreSurfaceMessage;
 	SDL_Texture* scoreMessage;
 

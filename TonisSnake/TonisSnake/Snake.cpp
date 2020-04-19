@@ -62,7 +62,6 @@ void Snake::Movement(Snake& _player)
 	int SDL_timePassed = SDL_GetTicks();
 
 	//Keyboard Inputs
-
 	if (state[SDL_SCANCODE_W] && currentSnakeDirection != Down && SDL_timePassed >= TimeAfterButtonPressedMs) {
 		lastSnakeDirection = currentSnakeDirection;
 		currentSnakeDirection = Up;
@@ -70,7 +69,6 @@ void Snake::Movement(Snake& _player)
 
 		int newDirectionChangeX(_player.m_Snake[0].snakePosX);
 		m_DirectionChangeX.push_back(newDirectionChangeX);
-
 		int newDirectionChangeY(_player.m_Snake[0].snakePosY);
 		m_DirectionChangeY.push_back(newDirectionChangeY);
 
@@ -83,7 +81,6 @@ void Snake::Movement(Snake& _player)
 
 		int newDirectionChangeX(_player.m_Snake[0].snakePosX);
 		m_DirectionChangeX.push_back(newDirectionChangeX);
-
 		int newDirectionChangeY(_player.m_Snake[0].snakePosY);
 		m_DirectionChangeY.push_back(newDirectionChangeY);
 
@@ -96,7 +93,6 @@ void Snake::Movement(Snake& _player)
 
 		int newDirectionChangeX(_player.m_Snake[0].snakePosX);
 		m_DirectionChangeX.push_back(newDirectionChangeX);
-
 		int newDirectionChangeY(_player.m_Snake[0].snakePosY);
 		m_DirectionChangeY.push_back(newDirectionChangeY);
 
@@ -109,12 +105,12 @@ void Snake::Movement(Snake& _player)
 
 		int newDirectionChangeX(_player.m_Snake[0].snakePosX);
 		m_DirectionChangeX.push_back(newDirectionChangeX);
-
 		int newDirectionChangeY(_player.m_Snake[0].snakePosY);
 		m_DirectionChangeY.push_back(newDirectionChangeY);
 
 		TimeAfterButtonPressedMs = SDL_GetTicks() + ButtonPressDelayMs;
 	}
+
 	//Debug KEY
 	if (state[SDL_SCANCODE_K])
 	{
@@ -140,6 +136,7 @@ void Snake::Movement(Snake& _player)
 	}
 
 
+	// Updates Snake Position
 	for (int i = 0; i < m_Snake.size(); i++)
 	{
 		switch (_player.m_Snake[i].currentSnakeDirection)
@@ -163,9 +160,6 @@ void Snake::Movement(Snake& _player)
 }
 
 
-
-
-
 void Snake::Render(SDL_Renderer& _renderer)
 {
 
@@ -180,6 +174,7 @@ void Snake::Render(SDL_Renderer& _renderer)
 		SDL_RenderFillRect(&_renderer, &snakeRect);
 	}
 };
+
 
 void Snake::SnakePushBack(Snake& _player)
 {

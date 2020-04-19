@@ -11,7 +11,6 @@ public:
 	Ball(int _posX, int _posY, int _radius);
 	~Ball();
 
-	void Update();
 	void Render(SDL_Renderer* _renderer);
 
 
